@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="src/style/style.css">
+    <title>Feliz Aniversário Yuri!</title>
+</head>
+<body>
+
+    <div id="overlay">
+        <div class="loader-content">
+            <h2>🎁 Você recebeu um presente!</h2>
+            <button onclick="iniciar()">ABRIR SURPRESA</button>
+        </div>
+    </div>
+
+    <audio id="musica" src="chess (slowed) [TrVx4XiRrrM] (1).mp3" loop preload="auto"></audio>
+
+    <div class="card" id="card">
+        <div class="img-box">
+            <div class="tenor-gif-embed" data-postid="7064682401296407403" data-share-method="host" data-aspect-ratio="1.08734" data-width="100%">
+                <a href="https://tenor.com/view/rat-dance-dance-gif-gif-7064682401296407403">Rat Dance GIF</a>
+            </div> 
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+        <div class="content">
+            <h2>Feliz Aniversário Yuri S2</h2>
+            <p>
+                Desejo a você um feliz aniversário cheio de alegria! Para você se lembrar com carinho, ganhou um vale qualquer coisa de 150 lula coins.
+            </p>
+            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="read-more">
+                Resgatar Presente
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function iniciar() {
+            const audio = document.getElementById('musica');
+            const overlay = document.getElementById('overlay');
+            
+            // Toca o áudio
+            audio.play().catch(function(error) {
+                console.log("Erro ao tocar áudio: ", error);
+            });
+
+            // Remove a tela de entrada com um efeito suave
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500);
+        }
+    </script>
+</body>
+</html>
