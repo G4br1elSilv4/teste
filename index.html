@@ -36,21 +36,35 @@
     </div>
 
     <script>
-        function iniciar() {
-            const audio = document.getElementById('musica');
-            const overlay = document.getElementById('overlay');
-            
-            // Toca o áudio
-            audio.play().catch(function(error) {
-                console.log("Erro ao tocar áudio: ", error);
-            });
+    const audio = document.getElementById('musica');
+    const overlay = document.getElementById('overlay');
 
-            // Remove a tela de entrada com um efeito suave
-            overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 500);
+    function iniciar() {
+        // Toca o áudio
+        audio.play().catch(function(error) {
+            console.log("Erro ao tocar áudio: ", error);
+        });
+
+        // Remove a tela de entrada
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 500);
+    }
+
+    // --- CÓDIGO PARA PAUSAR EM SEGUNDO PLANO ---
+    document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+            // Se a página estiver escondida (outra aba ou minimizado), pausa a música
+            audio.pause();
+        } else {
+            // Se a página voltar a ficar visível, volta a tocar
+            // Só volta a tocar se o overlay já tiver sido removido (ou seja, se já começou)
+            if (overlay.style.display === 'none') {
+                audio.play();
+            }
         }
-    </script>
+    });
+</script>
 </body>
 </html>
